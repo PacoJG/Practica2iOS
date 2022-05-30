@@ -73,7 +73,7 @@
         <!--View Controller-->
         <scene sceneID="ydl-6V-YmC">
             <objects>
-                <viewController id="sKv-QR-zt8" sceneMemberID="viewController">
+                <viewController id="sKv-QR-zt8" customClass="PDFViewController" customModule="Practica2iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V3i-m5-Wea">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -84,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pcE-mZ-XJP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1622" y="293"/>
+            <point key="canvasLocation" x="1622" y="296"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Ut0-FI-tKv">

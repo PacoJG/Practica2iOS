@@ -1,24 +1,21 @@
 //
-//  ExcelViewController.swift
+//  PDFViewController.swift
 //  Practica2iOS
 //
-//  Created by Francisco Jaime on 27/05/22.
+//  Created by Francisco Jaime on 30/05/22.
 //
 
 import UIKit
 import WebKit
 
-class ExcelViewController: UIViewController {
-    
+class PDFViewController: UIViewController {
+
     let webView = WKWebView()
     var a_i = UIActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(webView)
-        /*if let url = URL(string: "http://janzelaznog.com/DDAM/iOS/vim/localidades.xlsx"){
-            webView.load(URLRequest(url: url))
-        }*/
         a_i.style = .large
         a_i.color = .red
         a_i.hidesWhenStopped = true
@@ -31,7 +28,7 @@ class ExcelViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if(existeArchivoLocal("localidades.xlsx")){
+        if(existeArchivoLocal("Articles.pdf")){
             mostrarArchivo()
         }
         else{
@@ -50,7 +47,7 @@ class ExcelViewController: UIViewController {
     }
     
     func descargaArchivo(){
-        if let url = URL(string: "http://janzelaznog.com/DDAM/iOS/vim/localidades.xlsx"){
+        if let url = URL(string: "http://janzelaznog.com/DDAM/iOS/vim/Articles.pdf"){
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
             let session = URLSession.shared
@@ -59,7 +56,7 @@ class ExcelViewController: UIViewController {
                     print ("ocurrio un error \(error!.localizedDescription)")
                 }
                 else{
-                    self.guardaArchivo(bytes!, "localidades.xlsx")
+                    self.guardaArchivo(bytes!, "Articles.pdf")
                     DispatchQueue.main.async {
                         self.mostrarArchivo()
                         self.a_i.stopAnimating()
@@ -91,7 +88,7 @@ class ExcelViewController: UIViewController {
     func mostrarArchivo() {
         //setting home directory
         let homeDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        if let rutaArchivo = URL(string: homeDirURL.path + "/localidades.xlsx"){
+        if let rutaArchivo = URL(string: homeDirURL.path + "/Articles.pdf"){
             if FileManager.default.fileExists(atPath: rutaArchivo.path) {
                 let request = URLRequest(url: URL(fileURLWithPath: rutaArchivo.path))
                         DispatchQueue.main.async {
@@ -118,5 +115,6 @@ class ExcelViewController: UIViewController {
         self.a_i.startAnimating()
         return FileManager.default.fileExists(atPath: urlAlArchivo.path)
     }
+
 
 }
